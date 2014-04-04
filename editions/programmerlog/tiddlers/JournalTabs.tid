@@ -1,0 +1,3 @@
+title: JournalTabs
+
+<<tabs "JobLog7 JobLog31" "JobLog7" "$:/state/jobLog">>

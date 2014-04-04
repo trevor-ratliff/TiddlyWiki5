@@ -26,6 +26,7 @@ var NavigatorWidget = function(parseTreeNode,options) {
 		{type: "tw-close-all-tiddlers", handler: "handleCloseAllTiddlersEvent"},
 		{type: "tw-close-other-tiddlers", handler: "handleCloseOtherTiddlersEvent"},
 		{type: "tw-new-tiddler", handler: "handleNewTiddlerEvent"},
+		{type: "tw-new-journal-tiddler", handler: "handleNewJournalTiddlerEvent"},
 		{type: "tw-import-tiddlers", handler: "handleImportTiddlersEvent"},
 	]);
 };
@@ -344,6 +345,56 @@ NavigatorWidget.prototype.handleNewTiddlerEvent = function(event) {
 	var tiddler = new $tw.Tiddler(this.wiki.getCreationFields(),{
 		text: "Newly created tiddler",
 		title: title
+	},this.wiki.getModificationFields());
+	this.wiki.addTiddler(tiddler);
+	// Create the draft tiddler
+	var draftTitle = this.generateDraftTitle(title),
+		draftTiddler = new $tw.Tiddler({
+			text: ""
+		},templateTiddler,
+		this.wiki.getCreationFields(),
+		{
+			title: draftTitle,
+			"draft.title": title,
+			"draft.of": title
+		},this.wiki.getModificationFields());
+	this.wiki.addTiddler(draftTiddler);
+	// Update the story to insert the new draft at the top
+	var slot = storyList.indexOf(event.navigateFromTitle);
+	storyList.splice(slot + 1,0,draftTitle);
+	// Save the updated story
+	this.saveStoryList(storyList);
+	// Add a new record to the top of the history stack
+	this.addToHistory(draftTitle);
+	return false;
+};
+
+// Create a new journal draft tiddler
+NavigatorWidget.prototype.handleNewJournalTiddlerEvent = function(event) {
+	// Get the story details
+	var storyList = this.getStoryList();
+	// Get the template tiddler if there is one
+	var templateTiddler = this.wiki.getTiddler(event.param);
+	// Create the new tiddler
+	var title;
+	var ldteDate = new Date();
+	ldteDate.setTime(ldteDate.getTime() - (ldteDate.getTimezoneOffset() * 60 * 1000));
+	/*
+	var title;
+	var lobjDate = new Date();
+	lobjDate.setTime(lobjDate.getTime() - (lobjDate.getTimezoneOffset() * 60 * 1000));
+	for(var t=0; true; t++) {
+		title = lobjDate.toISOString().replace("T", "_").substr(0,19) + (t ? " " + t : "");
+		if(!this.renderer.renderTree.wiki.tiddlerExists(title)) {
+			break;
+		}
+	}
+	*/
+	title = ldteDate.toISOString().replace("T", "_").substr(0,19);
+	var tiddler = new $tw.Tiddler(this.wiki.getCreationFields(),{
+		text: "Newly created journal entry",
+		title: title,
+		tags: "journal"
 	},this.wiki.getModificationFields());
 	this.wiki.addTiddler(tiddler);
 	// Create the draft tiddler

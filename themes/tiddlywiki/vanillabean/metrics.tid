@@ -1,0 +1,11 @@
+title: $:/themes/tiddlywiki/vanillabean/metrics
+type: application/x-tiddler-dictionary
+
+fontsize: `14px`
+lineheight: `20px`
+storyleft: `0px`
+storytop: `0px`
+storyright: `calc(75% - 10px)`
+storywidth: `calc(75% - 10px)`
+responsivewidth: `770px`
+tiddlerwidth: `calc(95% - 0px)`

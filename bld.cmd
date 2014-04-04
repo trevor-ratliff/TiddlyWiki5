@@ -5,7 +5,7 @@ rem build TiddlyWiki5 for tiddlywiki.com
 rem Set up the build output directory
 
 if "x%TW5_BUILD_OUTPUT%" == "x" (
-	set TW5_BUILD_OUTPUT=..\jermolene.github.com
+	set TW5_BUILD_OUTPUT=..\tw5_build
 )
 
 if not exist %TW5_BUILD_OUTPUT%\nul (
@@ -48,6 +48,7 @@ node .\tiddlywiki.js ^
 	--rendertiddlers [!is[system]] $:/core/templates/static.tiddler.html %TW5_BUILD_OUTPUT%\static text/plain ^
 	|| exit 1
 
+
 rem encrypted.html: a version of the main file encrypted with the password "password"
 
 node .\tiddlywiki.js ^
@@ -57,6 +58,7 @@ node .\tiddlywiki.js ^
 	--rendertiddler $:/core/save/all %TW5_BUILD_OUTPUT%\encrypted.html text/plain ^
 	|| exit 1
 
+
 rem tahoelafs.html: empty wiki with plugin for Tahoe-LAFS
 
 node .\tiddlywiki.js ^
@@ -64,6 +66,7 @@ node .\tiddlywiki.js ^
 	--verbose ^
 	--rendertiddler $:/core/save/all %TW5_BUILD_OUTPUT%\tahoelafs.html text/plain ^
 	|| exit 1
+
 
 rem d3demo.html: wiki to demo d3 plugin
 
@@ -73,6 +76,7 @@ node .\tiddlywiki.js ^
 	--rendertiddler $:/core/save/all %TW5_BUILD_OUTPUT%\d3demo.html text/plain ^
 	|| exit 1
 
+
 rem codemirrordemo.html: wiki to demo codemirror plugin
 
 node .\tiddlywiki.js ^
@@ -80,6 +84,7 @@ node .\tiddlywiki.js ^
 	--verbose ^
 	--rendertiddler $:/core/save/all %TW5_BUILD_OUTPUT%\codemirrordemo.html text/plain ^
 	|| exit 1
+
 
 rem markdowndemo.html: wiki to demo markdown plugin
 
@@ -97,6 +102,25 @@ node .\tiddlywiki.js ^
 	--verbose ^
 	--rendertiddler $:/core/save/all %TW5_BUILD_OUTPUT%\highlightdemo.html text/plain ^
 	|| exit 1
+
+
+rem ProgrammerLog.html: wiki to demo a blog like wiki
+
+node .\tiddlywiki.js ^
+	.\editions\programmerlog ^
+	--verbose ^
+	--rendertiddler $:/core/save/all %TW5_BUILD_OUTPUT%\ProgrammerLog.html text/plain ^
+	|| exit 1
+
+
+rem empty_alt.html: an empty wiki using the empty edition
+
+node .\tiddlywiki.js ^
+	.\editions\empty ^
+	--verbose ^
+	--rendertiddler $:/core/save/all %TW5_BUILD_OUTPUT%\empty_alt.html text/plain ^
+	|| exit 1
+
 
 rem Make the CNAME file that GitHub Pages requires
 

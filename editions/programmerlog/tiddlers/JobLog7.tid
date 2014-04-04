@@ -1,0 +1,14 @@
+title: JobLog7
+tags: journal _hidden
+
+<$list filter="[tag[journal]!tag[_hidden]!sort[created]eachday[modified]limit[7]]">
+	<div class="journal-list-group">
+		<$view field="modified" format="date" template="YYYY-MM-DD" />
+		<$list filter="[tag[journal]!tag[_hidden]!sort[created]sameday{!!modified}limit[10]]">
+			<div class="journal-list-item" style="text-indent: 0em; margin-left: 2em">
+				<a href={{!!title}}><$view field="title" format="link"/></a>
+				<div style="text-indent: 0em; margin-left: 2em"><$view field="text" format="wikified"/></div>
+			</div>
+		</$list>
+	</div>
+</$list>

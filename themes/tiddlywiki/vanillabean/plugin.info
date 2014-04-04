@@ -1,0 +1,8 @@
+{
+	"title": "$:/themes/tiddlywiki/vanillabean",
+	"name": "Vanillabean",
+	"author": "Trevor Ratliff",
+	"core-version": ">=5.0.0",
+	"plugin-type": "theme",
+	"description": "A basic default theme based on Vanilla by JeremyRuston"
+}

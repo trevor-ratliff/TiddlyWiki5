@@ -1,5 +1,7 @@
 {
 	"plugins": [
+		"tiddlywiki/highlight",
+		"tiddlywiki/markdown",
 		"tiddlywiki/fullscreen"
 	],
 	"themes": [

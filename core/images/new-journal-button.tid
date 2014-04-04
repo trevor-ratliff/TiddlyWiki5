@@ -1,0 +1,4 @@
+title: $:/core/images/new-journal-button
+tags: $:/tags/Image
+
+<svg class="tw-image-new-journal-button" viewBox="0 0 32 32" version="1.1" width="22pt" height="22pt"><title id="titleJournal">add journal button</title><g id="journal"><path id="pFrontBottom" d="M1,13.311,1,28c0,2,0,3,3,3h14v-9h-3v6h-11v-14.689c0-2.3565-3-2.3565-3,0z"></path><path id="pTop" d="M15,13,15,9,5,9c-8,0-2-8,5-8h14v6h-3v-3h-11c-3,0-6,2-4.3102,2h12.31v7z"></path><path id="pPlus" d="m30,16,0,3-6-0,0,6-3,0,0-6-6,0,0-3,6,0,0-6,3,0,0,6z"></path></g></svg>
