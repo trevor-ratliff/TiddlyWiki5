@@ -59,7 +59,7 @@ code {
 	color: <<colour code-foreground>>;
 	background-color: <<colour code-background>>;
 	border: 1px solid <<colour code-border>>;
-    white-space: pre-wrap;
+	white-space: pre-wrap;
 	padding: 0 3px 2px;
 	border-radius: 3px;
 }
@@ -420,20 +420,22 @@ a.tw-tiddlylink-external:hover {
 	min-height: 100%;
 }
 
-@media (max-width: {{$:/themes/tiddlywiki/vanilla/metrics##storywidth}}) {
+@media (max-width: {{$:/themes/tiddlywiki/vanilla/metrics##responsivewidth}}) {
 
 	.sidebar-header {
 		padding: 14px;
 		min-height: 32px;
+		width: {{$:/themes/tiddlywiki/vanilla/metrics##tiddlerwidth}}
 	}
 
 	.story-river {
 		position: relative;
 		padding: 0;
+		width: {{$:/themes/tiddlywiki/vanilla/metrics##tiddlerwidth}}
 	}
 }
 
-@media (min-width: {{$:/themes/tiddlywiki/vanilla/metrics##storywidth}}) {
+@media (min-width: {{$:/themes/tiddlywiki/vanilla/metrics##responsivewidth}}) {
 
 	.tw-message-box {
 		margin: 21px -21px 21px -21px;
@@ -506,7 +508,7 @@ a.tw-tiddlylink-external:hover {
 .tw-view-field-value {
 }
 
-@media (max-width: 770px) {
+@media (max-width: {{$:/themes/tiddlywiki/vanilla/metrics##responsivewidth}}) {
 	.tw-tiddler-frame {
 		padding: 14px 14px 14px 14px;
 	}
@@ -516,7 +518,7 @@ a.tw-tiddlylink-external:hover {
 	}
 }
 
-@media (min-width: 770px) {
+@media (min-width: {{$:/themes/tiddlywiki/vanilla/metrics##responsivewidth}}) {
 	.tw-tiddler-frame {
 		padding: 28px 42px 42px 42px;
 		width: {{$:/themes/tiddlywiki/vanilla/metrics##tiddlerwidth}};
@@ -987,7 +989,7 @@ canvas.tw-edit-bitmapeditor  {
 	white-space: nowrap;
 }
 
-@media (min-width: 770px) {
+@media (min-width: {{$:/themes/tiddlywiki/vanilla/metrics##responsivewidth}}) {
 	.tw-more-sidebar {
 		margin-left: -14px;
 	}

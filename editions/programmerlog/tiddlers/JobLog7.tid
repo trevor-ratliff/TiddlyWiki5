@@ -6,8 +6,8 @@ tags: journal _hidden
 		<$view field="modified" format="date" template="YYYY-MM-DD" />
 		<$list filter="[tag[journal]!tag[_hidden]!sort[created]sameday{!!modified}limit[10]]">
 			<div class="journal-list-item" style="text-indent: 0em; margin-left: 2em">
-				<a href={{!!title}}><$view field="title" format="link"/></a>
-				<div style="text-indent: 0em; margin-left: 2em"><$view field="text" format="wikified"/></div>
+				<$link to={{!!title}}>{{!!title}}</$link>
+				<div style="text-indent: 0em; margin-left: 2em"><$transclude mode="block"/></div>
 			</div>
 		</$list>
 	</div>
